@@ -9,6 +9,7 @@ import { AnimatePresence } from 'framer-motion';
 import DestinationDetails from './Pages/Explore/DestinationDetails/DestinationDetails';
 import StoriesDetails from './Pages/Stories/StoriesDetails/StoriesDetails';
 import Gallery from './Pages/Gallery/Gallery';
+import Connect from './Pages/Connect/Connect';
 
 function App() {
   const location = useLocation()
@@ -20,6 +21,7 @@ function App() {
         <Route path="/explore" element={<ExploreSection />} />
         <Route path="/stories" element={<Stories />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/connect" element={<Connect />} />
         <Route path="/explore/:id" element={<DestinationDetails />} />
         <Route path="/stories/:id" element={<StoriesDetails />} />
       </Routes>

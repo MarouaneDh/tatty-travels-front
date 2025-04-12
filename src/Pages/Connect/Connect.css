@@ -1,0 +1,227 @@
+/* responsive-style.css (modified for contact) */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    color: #333;
+    background-color: #EEF1DA;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.colorful-hero {
+    text-align: center;
+    color: #333;
+    padding: 200px 0;
+    margin-bottom: 40px;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content h2 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: #EEF1DA;
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    color: #EEF1DA;
+}
+
+.colorful-btn {
+    display: inline-block;
+    background-color: #ADB2D4;
+    color: #000;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.colorful-btn:hover {
+    background-color: #8C95B2;
+}
+
+.featured-destinations {
+    margin-bottom: 50px;
+}
+
+.featured-destinations h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.8em;
+    color: #ADB2D4;
+}
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.destination {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.destination h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.destination p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.view-destination {
+    background-color: #D5E5D5;
+    color: #333;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.view-destination:hover {
+    background-color: #C2D5C2;
+}
+
+.contact-form {
+    margin-bottom: 50px;
+}
+
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.8em;
+    color: #ADB2D4;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #D5E5D5;
+    color: #333;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #C2D5C2;
+}
+
+/* Responsive styles */
+
+@media (max-width: 768px) {
+    .hero.container {
+        padding: 0;
+    }
+
+    .colorful-hero,
+    .destination-grid {
+        padding: 0;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .hero.container {
+        padding: 0;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+
+    .destination {
+        padding: 10px;
+    }
+
+    .destination h3 {
+        font-size: 1.5em;
+    }
+
+    .destination p {
+        font-size: 0.9em;
+    }
+
+    .contact-form {
+        padding: 0 10px;
+        /* Add some padding for smaller screens */
+    }
+
+    .contact-form h2 {
+        font-size: 2.5em;
+        /* Adjust title size for smaller screens */
+    }
+
+    .contact-form form {
+        max-width: 100%;
+        /* Make form full width on smaller screens */
+        padding: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        padding: 12px;
+        /* Adjust input padding */
+        font-size: 1em;
+        /* Adjust font size */
+    }
+}
+
+@media (max-width: 375px) {
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form h2 {
+        font-size: 2.2em;
+        /* Further adjust title size for very small screens */
+    }
+}
