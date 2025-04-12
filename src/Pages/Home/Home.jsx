@@ -53,9 +53,12 @@ const App = () => {
                         >
                             <h3>France</h3>
                             <p>Experience the magic of the Paris.</p>
-                            <a href="/explore/france" className="view-destination">
+                            <Link
+                                to={{ pathname: `/explore/${1}` }}
+                                className="view-destination"
+                            >
                                 View
-                            </a>
+                            </Link>
                         </div>
                         <div
                             className="destination"
@@ -65,9 +68,12 @@ const App = () => {
                         >
                             <h3>Machu Picchu Trails</h3>
                             <p>Journey to the heart of the Andes.</p>
-                            <a href="/explore/machu-picchu" className="view-destination">
+                            <Link
+                                to={{ pathname: `/explore/${1}` }}
+                                className="view-destination"
+                            >
                                 View
-                            </a>
+                            </Link>
                         </div>
                         <div
                             className="destination"
@@ -77,9 +83,12 @@ const App = () => {
                         >
                             <h3>Kyoto Gardens</h3>
                             <p>Find tranquility in ancient Japan.</p>
-                            <a href="/explore/kyoto" className="view-destination">
+                            <Link
+                                to={{ pathname: `/explore/${1}` }}
+                                className="view-destination"
+                            >
                                 View
-                            </a>
+                            </Link>
                         </div>
                         <div
                             className="destination"
@@ -89,9 +98,12 @@ const App = () => {
                         >
                             <h3>African Safari</h3>
                             <p>Witness the wild wonders of Africa.</p>
-                            <a href="/explore/african-safari" className="view-destination">
+                            <Link
+                                to={{ pathname: `/explore/${1}` }}
+                                className="view-destination"
+                            >
                                 View
-                            </a>
+                            </Link>
                         </div>
                         <div
                             className="destination"
@@ -101,9 +113,12 @@ const App = () => {
                         >
                             <h3>Northern Lights</h3>
                             <p>Experience the Aurora Borealis.</p>
-                            <a href="/explore/northern-lights" className="view-destination">
+                            <Link
+                                to={{ pathname: `/explore/${1}` }}
+                                className="view-destination"
+                            >
                                 View
-                            </a>
+                            </Link>
                         </div>
                         <div
                             className="destination"
@@ -113,9 +128,12 @@ const App = () => {
                         >
                             <h3>Great Barrier Reef</h3>
                             <p>Explore the underwater paradise.</p>
-                            <a href="/explore/great-barrier-reef" className="view-destination">
+                            <Link
+                                to={{ pathname: `/explore/${1}` }}
+                                className="view-destination"
+                            >
                                 View
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </section>
