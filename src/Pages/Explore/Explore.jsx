@@ -10,109 +10,117 @@ import { motion } from 'framer-motion';
 import './Explore.css';
 import { Link } from 'react-router-dom';
 
-const ExploreSection = () => (
-    <motion.div
-        // initial={{ width: 0 }}
-        // animate={{ width: "100%", transition: { duration: 0.1 } }}
-        // exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
-        className="container"
-    >
-        <section className="explore-destinations">
-            <h2>Explore Destinations</h2>
-            <div className="destination-grid">
-                <div
-                    className="destination"
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${ParisImage})`,
-                    }}
-                >
-                    <h3>France</h3>
-                    <p>Experience the magic of the Paris.</p>
-                    <Link
-                        to={{ pathname: `/explore/${1}` }}
-                        className="view-destination"
+const ExploreSection = () => {
+    const variants = {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeInOut' } },
+        exit: { opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeInOut' } },
+    };
+    return (
+        <motion.div
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="container"
+        >
+            <section className="explore-destinations">
+                <h2>Explore Destinations</h2>
+                <div className="destination-grid">
+                    <div
+                        className="destination"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${ParisImage})`,
+                        }}
                     >
-                        View
-                    </Link>
-                </div>
-                <div
-                    className="destination"
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination2Image})`,
-                    }}
-                >
-                    <h3>Machu Picchu Trails</h3>
-                    <p>Journey to the heart of the Andes.</p>
-                    <Link
-                        to={{ pathname: `/explore/${1}` }}
-                        className="view-destination"
+                        <h3>France</h3>
+                        <p>Experience the magic of the Paris.</p>
+                        <Link
+                            to={{ pathname: `/explore/${1}` }}
+                            className="view-destination"
+                        >
+                            View
+                        </Link>
+                    </div>
+                    <div
+                        className="destination"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination2Image})`,
+                        }}
                     >
-                        View
-                    </Link>
-                </div>
-                <div
-                    className="destination"
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination3Image})`,
-                    }}
-                >
-                    <h3>Kyoto Gardens</h3>
-                    <p>Find tranquility in ancient Japan.</p>
-                    <Link
-                        to={{ pathname: `/explore/${1}` }}
-                        className="view-destination"
+                        <h3>Machu Picchu Trails</h3>
+                        <p>Journey to the heart of the Andes.</p>
+                        <Link
+                            to={{ pathname: `/explore/${1}` }}
+                            className="view-destination"
+                        >
+                            View
+                        </Link>
+                    </div>
+                    <div
+                        className="destination"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination3Image})`,
+                        }}
                     >
-                        View
-                    </Link>
-                </div>
-                <div
-                    className="destination"
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination4Image})`,
-                    }}
-                >
-                    <h3>African Safari</h3>
-                    <p>Witness the wild wonders of Africa.</p>
-                    <Link
-                        to={{ pathname: `/explore/${1}` }}
-                        className="view-destination"
+                        <h3>Kyoto Gardens</h3>
+                        <p>Find tranquility in ancient Japan.</p>
+                        <Link
+                            to={{ pathname: `/explore/${1}` }}
+                            className="view-destination"
+                        >
+                            View
+                        </Link>
+                    </div>
+                    <div
+                        className="destination"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination4Image})`,
+                        }}
                     >
-                        View
-                    </Link>
-                </div>
-                <div
-                    className="destination"
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination5Image})`,
-                    }}
-                >
-                    <h3>Northern Lights</h3>
-                    <p>Experience the Aurora Borealis.</p>
-                    <Link
-                        to={{ pathname: `/explore/${1}` }}
-                        className="view-destination"
+                        <h3>African Safari</h3>
+                        <p>Witness the wild wonders of Africa.</p>
+                        <Link
+                            to={{ pathname: `/explore/${1}` }}
+                            className="view-destination"
+                        >
+                            View
+                        </Link>
+                    </div>
+                    <div
+                        className="destination"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination5Image})`,
+                        }}
                     >
-                        View
-                    </Link>
-                </div>
-                <div
-                    className="destination"
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination6Image})`,
-                    }}
-                >
-                    <h3>Great Barrier Reef</h3>
-                    <p>Explore the underwater paradise.</p>
-                    <Link
-                        to={{ pathname: `/explore/${1}` }}
-                        className="view-destination"
+                        <h3>Northern Lights</h3>
+                        <p>Experience the Aurora Borealis.</p>
+                        <Link
+                            to={{ pathname: `/explore/${1}` }}
+                            className="view-destination"
+                        >
+                            View
+                        </Link>
+                    </div>
+                    <div
+                        className="destination"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination6Image})`,
+                        }}
                     >
-                        View
-                    </Link>
+                        <h3>Great Barrier Reef</h3>
+                        <p>Explore the underwater paradise.</p>
+                        <Link
+                            to={{ pathname: `/explore/${1}` }}
+                            className="view-destination"
+                        >
+                            View
+                        </Link>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </motion.div>
-);
+            </section>
+        </motion.div>
+    )
+}
 
 export default ExploreSection;

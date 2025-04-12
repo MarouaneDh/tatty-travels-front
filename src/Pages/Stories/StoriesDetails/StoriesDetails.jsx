@@ -24,11 +24,18 @@ const StoryDetails = () => {
         }
     };
 
+    const variants = {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeInOut' } },
+        exit: { opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeInOut' } },
+    };
+
     return (
         <motion.div
-            // initial={{ width: 0 }}
-            // animate={{ width: "100%", transition: { duration: 0.1 } }}
-            // exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="container"
         >
             <section className="story-details">
