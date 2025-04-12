@@ -3,6 +3,8 @@ import Destination4Image from '../../../images/destination4.JPG';
 import Destination5Image from '../../../images/destination5.JPG';
 import Destination6Image from '../../../images/destination6.JPG';
 
+import { motion } from 'framer-motion';
+
 import './StoriesDetails.css';
 
 const StoryDetails = () => {
@@ -23,7 +25,12 @@ const StoryDetails = () => {
     };
 
     return (
-        <main className="container">
+        <motion.div
+            // initial={{ width: 0 }}
+            // animate={{ width: "100%", transition: { duration: 0.1 } }}
+            // exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+            className="container"
+        >
             <section className="story-details">
                 <div className="story-hero">
                     <img src={ParisImage} alt="A Solo Adventure in Italy" />
@@ -90,7 +97,7 @@ const StoryDetails = () => {
             <div id="fullscreen-overlay" onClick={hideFullscreen}>
                 <img id="fullscreen-image" src="" alt="Fullscreen Image" />
             </div>
-        </main>
+        </motion.div>
     );
 };
 

@@ -2,12 +2,18 @@ import Destination4Image from '../../images/destination4.JPG';
 import Destination2Image from '../../images/destination2.JPG';
 import Destination3Image from '../../images/destination3.JPG';
 
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 import './Stories.css';
 
 const TravelStoriesSection = () => (
-    <main className="container">
+    <motion.div
+        // initial={{ width: 0 }}
+        // animate={{ width: "100%", transition: { duration: 0.1 } }}
+        // exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+        className="container"
+    >
         <section className="travel-stories">
             <h2>Travel Stories</h2>
             <div className="story-grid">
@@ -39,7 +45,7 @@ const TravelStoriesSection = () => (
                 </div>
             </div>
         </section>
-    </main>
+    </motion.div>
 );
 
 export default TravelStoriesSection;
