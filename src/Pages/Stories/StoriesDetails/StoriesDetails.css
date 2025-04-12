@@ -106,48 +106,34 @@ body {
     background-color: #C2D5C2;
 }
 
-.explore-destinations {
+.story-details {
     margin-bottom: 50px;
 }
 
-.explore-destinations h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.8em;
-    color: #ADB2D4;
-}
-
-.destination-details {
-    margin-bottom: 50px;
-}
-
-.destination-hero {
-    height: 500px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+.story-hero {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.destination-hero h2 {
+.story-hero img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.story-hero h2 {
     font-size: 3em;
-}
-
-.destination-content {
-    padding: 20px;
-}
-
-.destination-content h3 {
     margin-top: 20px;
 }
 
-.destination-content ul {
-    list-style-type: disc;
-    margin-left: 20px;
+.story-content {
+    padding: 20px;
+    line-height: 1.8;
+}
+
+.story-content p {
+    margin-bottom: 20px;
 }
 
 .gallery-grid {
@@ -225,29 +211,34 @@ body {
         font-size: 0.9em;
     }
 
-    .destination-details {
+    .story-details {
         padding: 0 10px;
         /* Add some padding for smaller screens */
     }
 
-    .destination-content {
+    .story-hero {
+        margin-bottom: 20px;
+    }
+
+    .story-hero img {
+        max-height: 300px;
+        /* Adjust image height for smaller screens */
+    }
+
+    .story-hero h2 {
+        font-size: 2.5em;
+    }
+
+    .story-content {
         padding: 15px;
+        line-height: 1.6;
+        /* Adjust line height for readability */
     }
 
     .gallery-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         /* Smaller grid for smaller screens */
         gap: 10px;
-    }
-
-    .destination-hero {
-        height: 300px;
-        /* Smaller hero for smaller screens */
-        margin-bottom: 20px;
-    }
-
-    .destination-hero h2 {
-        font-size: 2.5em;
     }
 }
 
@@ -264,7 +255,7 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .destination-hero h2 {
+    .story-hero h2 {
         font-size: 2em;
     }
 }

@@ -8,6 +8,7 @@ import Destination6Image from '../../images/destination6.JPG';
 import { motion } from 'framer-motion';
 
 import './Explore.css';
+import { Link } from 'react-router-dom';
 
 const ExploreSection = () => (
     <motion.div
@@ -27,12 +28,12 @@ const ExploreSection = () => (
                 >
                     <h3>France</h3>
                     <p>Experience the magic of the Paris.</p>
-                    <a
-                        href="./destination-details/destination-details.html"
+                    <Link
+                        to={{ pathname: `/explore/${1}` }}
                         className="view-destination"
                     >
                         View
-                    </a>
+                    </Link>
                 </div>
                 <div
                     className="destination"
@@ -42,12 +43,12 @@ const ExploreSection = () => (
                 >
                     <h3>Machu Picchu Trails</h3>
                     <p>Journey to the heart of the Andes.</p>
-                    <a
-                        href="./destination-details/destination-details.html"
+                    <Link
+                        to={{ pathname: `/explore/${1}` }}
                         className="view-destination"
                     >
                         View
-                    </a>
+                    </Link>
                 </div>
                 <div
                     className="destination"
@@ -57,12 +58,12 @@ const ExploreSection = () => (
                 >
                     <h3>Kyoto Gardens</h3>
                     <p>Find tranquility in ancient Japan.</p>
-                    <a
-                        href="./destination-details/destination-details.html"
+                    <Link
+                        to={{ pathname: `/explore/${1}` }}
                         className="view-destination"
                     >
                         View
-                    </a>
+                    </Link>
                 </div>
                 <div
                     className="destination"
@@ -72,12 +73,12 @@ const ExploreSection = () => (
                 >
                     <h3>African Safari</h3>
                     <p>Witness the wild wonders of Africa.</p>
-                    <a
-                        href="./destination-details/destination-details.html"
+                    <Link
+                        to={{ pathname: `/explore/${1}` }}
                         className="view-destination"
                     >
                         View
-                    </a>
+                    </Link>
                 </div>
                 <div
                     className="destination"
@@ -87,12 +88,12 @@ const ExploreSection = () => (
                 >
                     <h3>Northern Lights</h3>
                     <p>Experience the Aurora Borealis.</p>
-                    <a
-                        href="./destination-details/destination-details.html"
+                    <Link
+                        to={{ pathname: `/explore/${1}` }}
                         className="view-destination"
                     >
                         View
-                    </a>
+                    </Link>
                 </div>
                 <div
                     className="destination"
@@ -102,12 +103,12 @@ const ExploreSection = () => (
                 >
                     <h3>Great Barrier Reef</h3>
                     <p>Explore the underwater paradise.</p>
-                    <a
-                        href="./destination-details/destination-details.html"
+                    <Link
+                        to={{ pathname: `/explore/${1}` }}
                         className="view-destination"
                     >
                         View
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>
