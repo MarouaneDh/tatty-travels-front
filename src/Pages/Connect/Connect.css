@@ -117,7 +117,7 @@ body {
     color: #ADB2D4;
 }
 
-.contact-form form {
+.contact-form .form {
     display: flex;
     flex-direction: column;
     max-width: 500px;
@@ -191,7 +191,7 @@ body {
         /* Adjust title size for smaller screens */
     }
 
-    .contact-form form {
+    .contact-form .form {
         max-width: 100%;
         /* Make form full width on smaller screens */
         padding: 15px;
