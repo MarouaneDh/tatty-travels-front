@@ -1,18 +1,15 @@
-import ParisImage from '../../images/paris.JPG';
-import Destination2Image from '../../images/destination2.JPG';
-import Destination3Image from '../../images/destination3.JPG';
-import Destination4Image from '../../images/destination4.JPG';
-import Destination5Image from '../../images/destination5.JPG';
-import Destination6Image from '../../images/destination6.JPG';
-
-import { motion } from 'framer-motion';
-
-import './Explore.css';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getAllDestinations } from '../../redux/slices/destinations/destinationsAsyncThunk';
+
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { API, API_HOST } from '../../configs/api';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+
+import { getAllDestinations } from '../../redux/slices/destinations/destinationsAsyncThunk';
+
+import 'react-loading-skeleton/dist/skeleton.css'
+import './Explore.css';
 
 const ExploreSection = () => {
     const dispatch = useDispatch();
@@ -27,8 +24,6 @@ const ExploreSection = () => {
     useEffect(() => {
         dispatch(getAllDestinations());
     }, [])
-
-    console.log(AllDestinations)
 
     return (
         <motion.div
@@ -64,6 +59,15 @@ const ExploreSection = () => {
                         })
                     }
                 </div>
+                {
+                    isLoading && <div className="destination-grid">
+                        <SkeletonTheme baseColor="#ffffff" highlightColor="rgba(0, 0, 0, 0.4)">
+                            <Skeleton className="destination" />
+                            <Skeleton className="destination" />
+                            <Skeleton className="destination" />
+                        </SkeletonTheme>
+                    </div>
+                }
             </section>
         </motion.div>
     )
