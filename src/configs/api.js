@@ -5,4 +5,14 @@ export const API = {
         login: 'auth/login',
         register: 'auth/register',
     },
+    destination: {
+        destination: 'destination/',
+        featured: 'destination/featured',
+    },
+    stories: {
+        story: 'story/',
+    },
+    images: {
+        upload: 'upload/'
+    }
 };

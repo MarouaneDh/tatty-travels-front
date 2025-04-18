@@ -1,15 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import { login } from '../../redux/slices/auth/authAsyncThunk';
+
 import './Connect.css';
+import { useNavigate } from 'react-router-dom';
 
 const Connect = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const { data, error, isLoading, isLoaggedIn, status } = useSelector(state => state.auth.auth)
 
     const [email, setEmail] = useState('')
@@ -24,6 +28,13 @@ const Connect = () => {
     const loginAdmin = () => {
         dispatch(login({ email, password }))
     }
+
+    useEffect(() => {
+        if (status === 'fulfilled') {
+            navigate('/')
+        }
+    }, [status])
+
 
     return (
         <motion.div

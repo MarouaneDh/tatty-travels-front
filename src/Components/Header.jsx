@@ -2,9 +2,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logout } from '../redux/slices/auth/authSlice';
 
 const Header = () => {
+    const dispatch = useDispatch();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const token = localStorage.getItem('token');
 
     const handleBurgerClick = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -13,6 +18,11 @@ const Header = () => {
     const handleNavLinkClick = () => {
         setIsMenuOpen(false);
     };
+
+    const handleLogout = () => {
+        dispatch(logout())
+        window.location.reload()
+    }
 
     return (
         <header className="sticky-header">
@@ -24,7 +34,10 @@ const Header = () => {
                         <li><Link to="/explore" className="nav-link" onClick={handleNavLinkClick}>Explore</Link></li>
                         <li><Link to="/stories" className="nav-link" onClick={handleNavLinkClick}>Stories</Link></li>
                         <li><Link to="/gallery" className="nav-link" onClick={handleNavLinkClick}>Gallery</Link></li>
-                        <li><Link to="/connect" className="nav-link" onClick={handleNavLinkClick}>Connect</Link></li>
+                        {
+                            token ? <li onClick={handleLogout}><Link className="nav-link" >Logout</Link></li> :
+                                <li><Link to="/login" className="nav-link" onClick={handleNavLinkClick}>Login</Link></li>
+                        }
                     </ul>
                 </nav>
                 <div className={`burger-menu ${isMenuOpen ? 'active' : ''}`} onClick={handleBurgerClick}>

@@ -21,7 +21,7 @@ function App() {
         <Route path="/explore" element={<ExploreSection />} />
         <Route path="/stories" element={<Stories />} />
         <Route path="/gallery" element={<Gallery />} />
-        <Route path="/connect" element={<Connect />} />
+        <Route path="/login" element={<Connect />} />
         <Route path="/explore/:id" element={<DestinationDetails />} />
         <Route path="/stories/:id" element={<StoriesDetails />} />
       </Routes>

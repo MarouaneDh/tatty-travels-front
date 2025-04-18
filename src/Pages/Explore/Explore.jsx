@@ -9,13 +9,27 @@ import { motion } from 'framer-motion';
 
 import './Explore.css';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getAllDestinations } from '../../redux/slices/destinations/destinationsAsyncThunk';
+import { API, API_HOST } from '../../configs/api';
 
 const ExploreSection = () => {
+    const dispatch = useDispatch();
+    const { AllDestinations, error, isLoading, status } = useSelector((state) => state.destinations.AllDestinations);
+
     const variants = {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeInOut' } },
         exit: { opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeInOut' } },
     };
+
+    useEffect(() => {
+        dispatch(getAllDestinations());
+    }, [])
+
+    console.log(AllDestinations)
+
     return (
         <motion.div
             variants={variants}
@@ -27,96 +41,28 @@ const ExploreSection = () => {
             <section className="explore-destinations">
                 <h2>Explore Destinations</h2>
                 <div className="destination-grid">
-                    <div
-                        className="destination"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${ParisImage})`,
-                        }}
-                    >
-                        <h3>France</h3>
-                        <p>Experience the magic of the Paris.</p>
-                        <Link
-                            to={{ pathname: `/explore/${1}` }}
-                            className="view-destination"
-                        >
-                            View
-                        </Link>
-                    </div>
-                    <div
-                        className="destination"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination2Image})`,
-                        }}
-                    >
-                        <h3>Machu Picchu Trails</h3>
-                        <p>Journey to the heart of the Andes.</p>
-                        <Link
-                            to={{ pathname: `/explore/${1}` }}
-                            className="view-destination"
-                        >
-                            View
-                        </Link>
-                    </div>
-                    <div
-                        className="destination"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination3Image})`,
-                        }}
-                    >
-                        <h3>Kyoto Gardens</h3>
-                        <p>Find tranquility in ancient Japan.</p>
-                        <Link
-                            to={{ pathname: `/explore/${1}` }}
-                            className="view-destination"
-                        >
-                            View
-                        </Link>
-                    </div>
-                    <div
-                        className="destination"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination4Image})`,
-                        }}
-                    >
-                        <h3>African Safari</h3>
-                        <p>Witness the wild wonders of Africa.</p>
-                        <Link
-                            to={{ pathname: `/explore/${1}` }}
-                            className="view-destination"
-                        >
-                            View
-                        </Link>
-                    </div>
-                    <div
-                        className="destination"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination5Image})`,
-                        }}
-                    >
-                        <h3>Northern Lights</h3>
-                        <p>Experience the Aurora Borealis.</p>
-                        <Link
-                            to={{ pathname: `/explore/${1}` }}
-                            className="view-destination"
-                        >
-                            View
-                        </Link>
-                    </div>
-                    <div
-                        className="destination"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${Destination6Image})`,
-                        }}
-                    >
-                        <h3>Great Barrier Reef</h3>
-                        <p>Explore the underwater paradise.</p>
-                        <Link
-                            to={{ pathname: `/explore/${1}` }}
-                            className="view-destination"
-                        >
-                            View
-                        </Link>
-                    </div>
+                    {
+                        AllDestinations && AllDestinations.map((destination, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className="destination"
+                                    style={{
+                                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${API_HOST + API.images.upload + destination.mainPicture})`,
+                                    }}
+                                >
+                                    <h3>{destination.title}</h3>
+                                    <p>{destination.description}</p>
+                                    <Link
+                                        to={{ pathname: `/explore/${destination._id}` }}
+                                        className="view-destination"
+                                    >
+                                        View
+                                    </Link>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </section>
         </motion.div>
