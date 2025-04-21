@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import { login } from '../../redux/slices/auth/authAsyncThunk';
 
 import './Connect.css';
-import { useNavigate } from 'react-router-dom';
 
 const Connect = () => {
     const dispatch = useDispatch()

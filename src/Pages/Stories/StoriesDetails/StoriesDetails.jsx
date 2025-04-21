@@ -5,6 +5,7 @@ import Destination6Image from '../../../images/destination6.JPG';
 
 import { motion } from 'framer-motion';
 
+
 import './StoriesDetails.css';
 
 const StoryDetails = () => {

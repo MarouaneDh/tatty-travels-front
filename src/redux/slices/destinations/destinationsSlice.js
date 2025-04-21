@@ -54,7 +54,7 @@ export const destinationsSlice = createSlice({
             .addCase(getOneDestination.fulfilled, (state, action) => {
                 state.OneDestination.isLoading = false;
                 state.OneDestination.status = 'fulfilled'
-                state.OneDestination.OneDestination = action.payload
+                state.OneDestination.OneDestination = action.payload.response
             })
             .addCase(getOneDestination.rejected, (state, action) => {
                 state.OneDestination.isLoading = false;
@@ -71,7 +71,7 @@ export const destinationsSlice = createSlice({
             .addCase(getFeaturedDestinations.fulfilled, (state, action) => {
                 state.FeaturedDestinations.isLoading = false;
                 state.FeaturedDestinations.status = 'fulfilled'
-                state.FeaturedDestinations.FeaturedDestinations = action.payload
+                state.FeaturedDestinations.FeaturedDestinations = action.payload.response
             })
             .addCase(getFeaturedDestinations.rejected, (state, action) => {
                 state.FeaturedDestinations.isLoading = false;

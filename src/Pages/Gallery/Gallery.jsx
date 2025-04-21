@@ -7,6 +7,7 @@ import Destination6Image from '../../images/destination6.JPG';
 
 import { motion } from 'framer-motion';
 
+
 import './Gallery.css';
 
 const Gallery = () => {
@@ -82,7 +83,7 @@ const Gallery = () => {
                 </div>
             </section>
             <div id="fullscreen-overlay" onClick={hideFullscreen}>
-                <img id="fullscreen-image" src="" alt="Fullscreen Image" />
+                <img id="fullscreen-image" src="#" alt="Fullscreen Image" />
             </div>
         </motion.div>
     );

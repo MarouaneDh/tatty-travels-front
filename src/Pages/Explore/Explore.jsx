@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { API, API_HOST } from '../../configs/api';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
+
 import { getAllDestinations } from '../../redux/slices/destinations/destinationsAsyncThunk';
 
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -40,7 +41,7 @@ const ExploreSection = () => {
                         AllDestinations && AllDestinations.map((destination, index) => {
                             return (
                                 <div
-                                    key={index}
+                                    key={destination._id}
                                     className="destination"
                                     style={{
                                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${API_HOST + API.images.upload + destination.mainPicture})`,

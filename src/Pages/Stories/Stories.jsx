@@ -3,6 +3,7 @@ import Destination2Image from '../../images/destination2.JPG';
 import Destination3Image from '../../images/destination3.JPG';
 
 import { motion } from 'framer-motion';
+
 import { Link } from 'react-router-dom';
 
 import './Stories.css';
