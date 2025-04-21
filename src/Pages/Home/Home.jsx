@@ -1,30 +1,19 @@
-import ParisImage from '../../images/paris.JPG';
-import MachuPicchuImage from '../../images/destination2.JPG';
-import KyotoImage from '../../images/destination3.JPG';
-import SafariImage from '../../images/destination4.JPG';
-import NorthernLightsImage from '../../images/destination5.JPG';
-import ReefImage from '../../images/destination6.JPG';
-import HeroBgImage from '../../images/hero-bg.JPG';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
-
-import './Home.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getFeaturedDestinations } from '../../redux/slices/destinations/destinationsAsyncThunk';
+import { variants } from '../../configs/helper';
 import { API, API_HOST } from '../../configs/api';
+
+import { getFeaturedDestinations } from '../../redux/slices/destinations/destinationsAsyncThunk';
+
+import HeroBgImage from '../../images/hero-bg.JPG';
+import './Home.css';
 
 const App = () => {
     const dispatch = useDispatch()
     const { FeaturedDestinations } = useSelector(state => state.destinations.FeaturedDestinations)
-
-    const variants = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeInOut' } },
-        exit: { opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeInOut' } },
-    };
 
     useEffect(() => {
         dispatch(getFeaturedDestinations())

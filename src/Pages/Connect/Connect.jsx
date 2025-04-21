@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { variants } from '../../configs/helper';
 
 import { login } from '../../redux/slices/auth/authAsyncThunk';
 
@@ -20,12 +20,6 @@ const Connect = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const variants = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeInOut' } },
-        exit: { opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeInOut' } },
-    };
-
     const loginAdmin = () => {
         dispatch(login({ email, password }))
     }
@@ -35,7 +29,6 @@ const Connect = () => {
             navigate('/')
         }
     }, [status])
-
 
     return (
         <motion.div

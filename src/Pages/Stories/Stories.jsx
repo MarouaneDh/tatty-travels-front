@@ -6,22 +6,13 @@ import { Link } from 'react-router-dom';
 
 import { getAllStories } from '../../redux/slices/stories/storiesAsyncThunk';
 import { API, API_HOST } from '../../configs/api';
+import { truncateText, variants } from '../../configs/helper';
 
 import './Stories.css';
 
 const TravelStoriesSection = () => {
     const dispatch = useDispatch()
     const { AllStories, error, isLoading, status } = useSelector((state) => state.stories.AllStories);
-
-    const variants = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeInOut' } },
-        exit: { opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeInOut' } },
-    };
-
-    const truncateText = (text) => {
-        return text.substring(0, 20) + "..."
-    };
 
     useEffect(() => {
         dispatch(getAllStories());

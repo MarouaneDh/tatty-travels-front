@@ -6,33 +6,11 @@ import Destination5Image from '../../images/destination5.JPG';
 import Destination6Image from '../../images/destination6.JPG';
 
 import { motion } from 'framer-motion';
-
+import { hideFullscreen, showFullscreen, variants } from '../../configs/helper';
 
 import './Gallery.css';
 
 const Gallery = () => {
-    const showFullscreen = (imageSrc) => {
-        const fullscreenImage = document.getElementById('fullscreen-image');
-        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-        if (fullscreenImage && fullscreenOverlay) {
-            fullscreenImage.src = imageSrc;
-            fullscreenOverlay.style.display = 'flex';
-        }
-    };
-
-    const hideFullscreen = () => {
-        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-        if (fullscreenOverlay) {
-            fullscreenOverlay.style.display = 'none';
-        }
-    };
-
-    const variants = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeInOut' } },
-        exit: { opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeInOut' } },
-    };
-
     return (
         <motion.div
             variants={variants}

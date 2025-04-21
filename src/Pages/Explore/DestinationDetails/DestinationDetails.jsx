@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { motion } from 'framer-motion';
 import { API, API_HOST } from '../../../configs/api';
+import { hideFullscreen, showFullscreen, variants } from '../../../configs/helper';
+
 import { getOneDestination } from '../../../redux/slices/destinations/destinationsAsyncThunk';
 
 import './DestinationDetails.css';
@@ -15,28 +17,6 @@ const DestinationDetails = () => {
     const params = useParams()
 
     const destinationId = params.id
-
-    const showFullscreen = (imageSrc) => {
-        const fullscreenImage = document.getElementById('fullscreen-image');
-        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-        if (fullscreenImage && fullscreenOverlay) {
-            fullscreenImage.src = imageSrc;
-            fullscreenOverlay.style.display = 'flex';
-        }
-    };
-
-    const hideFullscreen = () => {
-        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-        if (fullscreenOverlay) {
-            fullscreenOverlay.style.display = 'none';
-        }
-    };
-
-    const variants = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeInOut' } },
-        exit: { opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeInOut' } },
-    };
 
     useEffect(() => {
         if (destinationId) {

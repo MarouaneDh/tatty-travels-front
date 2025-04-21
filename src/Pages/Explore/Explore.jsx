@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { API, API_HOST } from '../../configs/api';
+import { variants } from '../../configs/helper';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-
 
 import { getAllDestinations } from '../../redux/slices/destinations/destinationsAsyncThunk';
 
@@ -15,12 +15,6 @@ import './Explore.css';
 const ExploreSection = () => {
     const dispatch = useDispatch();
     const { AllDestinations, error, isLoading, status } = useSelector((state) => state.destinations.AllDestinations);
-
-    const variants = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeInOut' } },
-        exit: { opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeInOut' } },
-    };
 
     useEffect(() => {
         dispatch(getAllDestinations());
