@@ -1,16 +1,12 @@
-import Destination2Image from '../../../images/destination2.JPG';
-import Destination3Image from '../../../images/destination3.JPG';
-import Destination4Image from '../../../images/destination4.JPG';
-import Destination5Image from '../../../images/destination5.JPG';
-
-import { motion } from 'framer-motion';
-
-import './DestinationDetails.css';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getOneDestination } from '../../../redux/slices/destinations/destinationsAsyncThunk';
+
+import { motion } from 'framer-motion';
 import { API, API_HOST } from '../../../configs/api';
+import { getOneDestination } from '../../../redux/slices/destinations/destinationsAsyncThunk';
+
+import './DestinationDetails.css';
 
 
 const DestinationDetails = () => {
