@@ -9,8 +9,19 @@ import { motion } from 'framer-motion';
 import { hideFullscreen, showFullscreen, variants } from '../../configs/helper';
 
 import './Gallery.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getAllImages } from '../../redux/slices/images/imagesAsyncThunk';
+import { image } from 'framer-motion/client';
 
 const Gallery = () => {
+    const dispatch = useDispatch()
+    const images = useSelector((state) => state.images.AllImages.AllImages)
+
+    useEffect(() => {
+        dispatch(getAllImages())
+    }, [])
+
     return (
         <motion.div
             variants={variants}
@@ -21,44 +32,30 @@ const Gallery = () => {
         >
             <section className="photo-gallery">
                 <h2>Photo Gallery</h2>
-                <div className="gallery-grid">
-                    <img
-                        src={ParisImage}
-                        alt="Gallery 1"
-                        className="gallery-image"
-                        onClick={() => showFullscreen(ParisImage)}
-                    />
-                    <img
-                        src={Destination2Image}
-                        alt="Gallery 2"
-                        className="gallery-image"
-                        onClick={() => showFullscreen(Destination2Image)}
-                    />
-                    <img
-                        src={Destination3Image}
-                        alt="Gallery 3"
-                        className="gallery-image"
-                        onClick={() => showFullscreen(Destination3Image)}
-                    />
-                    <img
-                        src={Destination4Image}
-                        alt="Gallery 4"
-                        className="gallery-image"
-                        onClick={() => showFullscreen(Destination4Image)}
-                    />
-                    <img
-                        src={Destination5Image}
-                        alt="Gallery 5"
-                        className="gallery-image"
-                        onClick={() => showFullscreen(Destination5Image)}
-                    />
-                    <img
-                        src={Destination6Image}
-                        alt="Gallery 6"
-                        className="gallery-image"
-                        onClick={() => showFullscreen(Destination6Image)}
-                    />
-                </div>
+                {
+                    images && images.map((image, index) => {
+                        return (
+                            <div key={index} >
+                                <h2 style={{ textAlign: "start", fontSize: 30 }}>{image.country}</h2>
+                                <div className="gallery-grid">
+                                    {
+                                        image.images.map((img) => {
+                                            return (
+                                                <img
+                                                    key={img._id}
+                                                    src={img.imageUrl}
+                                                    alt={image.city}
+                                                    className="gallery-image"
+                                                    onClick={() => showFullscreen(img.imageUrl)}
+                                                />
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        )
+                    })
+                }
             </section>
             <div id="fullscreen-overlay" onClick={hideFullscreen}>
                 <img id="fullscreen-image" src="#" alt="Fullscreen Image" />
