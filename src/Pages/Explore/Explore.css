@@ -1,61 +1,12 @@
-body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.7;
-    color: #333;
-    background-color: #EEF1DA;
-}
+/* Explore.css */
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.colorful-hero {
-    text-align: center;
-    color: #333;
-    padding: 200px 0;
-    margin-bottom: 40px;
-    background-size: cover;
-    background-position: center;
-}
-
-.hero-content h2 {
-    font-size: 3.5em;
-    margin-bottom: 20px;
-    color: #EEF1DA;
-}
-
-.hero-content p {
-    font-size: 1.3em;
-    margin-bottom: 30px;
-    color: #EEF1DA;
-}
-
-.colorful-btn {
-    display: inline-block;
-    background-color: #ADB2D4;
-    color: #000;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.colorful-btn:hover {
-    background-color: #8C95B2;
-}
-
-.featured-destinations {
+.explore-destinations {
     margin-bottom: 50px;
 }
 
-.featured-destinations h2 {
+.explore-destinations h2 {
     text-align: center;
-    margin-bottom: 40px;
+    margin: 10px;
     font-size: 2.8em;
     color: #ADB2D4;
 }
@@ -104,39 +55,11 @@ body {
     background-color: #C2D5C2;
 }
 
-.explore-destinations {
-    margin-bottom: 50px;
-}
-
-.explore-destinations h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.8em;
-    color: #ADB2D4;
-}
-
-/* Responsive styles (relevant parts kept) */
+/* Responsive styles for Explore component */
 
 @media (max-width: 768px) {
-    .hero.container {
+    .explore-destinations .destination-grid {
         padding: 0;
-    }
-
-    .colorful-hero,
-    .destination-grid {
-        padding: 0;
-    }
-
-    .container {
-        padding: 0;
-    }
-
-    .hero.container {
-        padding: 0;
-    }
-
-    .hero-content {
-        padding: 20px;
     }
 
     .destination {
@@ -153,15 +76,7 @@ body {
 }
 
 @media (max-width: 375px) {
-    .hero-content h2 {
-        font-size: 2.5em;
-    }
-
-    .hero-content p {
-        font-size: 1em;
-    }
-
-    .destination-grid {
+    .explore-destinations .destination-grid {
         grid-template-columns: 1fr;
     }
 }

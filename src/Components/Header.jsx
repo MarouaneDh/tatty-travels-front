@@ -1,9 +1,13 @@
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+
 import { logout } from '../redux/slices/auth/authSlice';
+
+import './Navbar.css';
 
 const Header = () => {
     const dispatch = useDispatch();

@@ -10,7 +10,6 @@ import { getOneDestination } from '../../../redux/slices/destinations/destinatio
 
 import './DestinationDetails.css';
 
-
 const DestinationDetails = () => {
     const dispatch = useDispatch()
     const { OneDestination, error, isLoading, status } = useSelector((state) => state.destinations.OneDestination)
