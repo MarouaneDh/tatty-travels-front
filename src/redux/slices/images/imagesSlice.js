@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllImages, getOneImage } from './imagesAsyncThunk';
+import { getAllImages, getOneImage, uploadImage } from './imagesAsyncThunk';
 
 const initialState = {
     AllImages: {
@@ -13,6 +13,12 @@ const initialState = {
         status: null,
         error: null,
         OneImage: null,
+    },
+    OneImageUpload: {
+        isLoading: false,
+        status: null,
+        error: null,
+        OneImageUpload: null,
     }
 };
 
@@ -39,7 +45,7 @@ export const imagesSlice = createSlice({
                 state.AllImages.error = action.payload;
             })
 
-            //get one destination
+            //get one image
             .addCase(getOneImage.pending, (state) => {
                 state.OneImage.isLoading = true;
                 state.OneImage.status = 'pending'
@@ -54,6 +60,23 @@ export const imagesSlice = createSlice({
                 state.OneImage.isLoading = false;
                 state.OneImage.status = 'rejected';
                 state.OneImage.error = action.payload;
+            })
+
+            //upload one image
+            .addCase(uploadImage.pending, (state) => {
+                state.OneImageUpload.isLoading = true;
+                state.OneImageUpload.status = 'pending'
+                state.OneImageUpload.error = null
+            })
+            .addCase(uploadImage.fulfilled, (state, action) => {
+                state.OneImageUpload.isLoading = false;
+                state.OneImageUpload.status = 'fulfilled'
+                state.OneImageUpload.OneImageUpload = action.payload.response
+            })
+            .addCase(uploadImage.rejected, (state, action) => {
+                state.OneImageUpload.isLoading = false;
+                state.OneImageUpload.status = 'rejected';
+                state.OneImageUpload.error = action.payload;
             })
     },
 });

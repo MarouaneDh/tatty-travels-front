@@ -30,3 +30,17 @@ export const getOneImage = createAsyncThunk(
     }
 );
 
+export const uploadImage = createAsyncThunk(
+    'images/uploadImage',
+    async (formdata, { fulfillWithValue, rejectWithValue }) => {
+        try {
+            const URL = API_HOST + API.images.upload;
+            const response = await axiosService.post(URL, formdata);
+            return fulfillWithValue(response.data);
+        } catch (err) {
+            console.error(err);
+            return rejectWithValue(err.response?.data || err.message);
+        }
+    }
+);
+
