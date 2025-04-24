@@ -16,17 +16,19 @@ function App() {
   return (
     <>
       <Header />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<motion.div key={location.pathname}><Home /></motion.div>} />
-          <Route path="/explore" element={<motion.div key={location.pathname}><ExploreSection /></motion.div>} />
-          <Route path="/stories" element={<motion.div key={location.pathname}><Stories /></motion.div>} />
-          <Route path="/gallery" element={<motion.div key={location.pathname}><Gallery /></motion.div>} />
-          <Route path="/login" element={<motion.div key={location.pathname}><Connect /></motion.div>} />
-          <Route path="/explore/:id" element={<motion.div key={location.pathname}><DestinationDetails /></motion.div>} />
-          <Route path="/stories/:id" element={<motion.div key={location.pathname}><StoriesDetails /></motion.div>} />
-        </Routes>
-      </AnimatePresence>
+      <div style={{ marginBottom: '90px' }}>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<motion.div key={location.pathname}><Home /></motion.div>} />
+            <Route path="/explore" element={<motion.div key={location.pathname}><ExploreSection /></motion.div>} />
+            <Route path="/stories" element={<motion.div key={location.pathname}><Stories /></motion.div>} />
+            <Route path="/gallery" element={<motion.div key={location.pathname}><Gallery /></motion.div>} />
+            <Route path="/login" element={<motion.div key={location.pathname}><Connect /></motion.div>} />
+            <Route path="/explore/:id" element={<motion.div key={location.pathname}><DestinationDetails /></motion.div>} />
+            <Route path="/stories/:id" element={<motion.div key={location.pathname}><StoriesDetails /></motion.div>} />
+          </Routes>
+        </AnimatePresence>
+      </div>
       <Footer />
     </>
   );

@@ -6,6 +6,10 @@
     text-align: center;
     padding: 10px 20px;
     font-size: 0.9em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .footer-content {

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllImages, getOneImage, uploadImage } from './imagesAsyncThunk';
+import { deleteOneImage, getAllImages, getOneImage, uploadImage } from './imagesAsyncThunk';
 
 const initialState = {
     AllImages: {
@@ -19,7 +19,13 @@ const initialState = {
         status: null,
         error: null,
         OneImageUpload: null,
-    }
+    },
+    deleteOneImage: {
+        isLoading: false,
+        status: null,
+        error: null,
+        deleteOneImage: null,
+    },
 };
 
 export const imagesSlice = createSlice({
@@ -77,6 +83,23 @@ export const imagesSlice = createSlice({
                 state.OneImageUpload.isLoading = false;
                 state.OneImageUpload.status = 'rejected';
                 state.OneImageUpload.error = action.payload;
+            })
+
+            //delete one image
+            .addCase(deleteOneImage.pending, (state) => {
+                state.deleteOneImage.isLoading = true;
+                state.deleteOneImage.status = 'pending'
+                state.deleteOneImage.error = null
+            })
+            .addCase(deleteOneImage.fulfilled, (state, action) => {
+                state.deleteOneImage.isLoading = false;
+                state.deleteOneImage.status = 'fulfilled'
+                state.deleteOneImage.deleteOneImage = action.payload.response
+            })
+            .addCase(deleteOneImage.rejected, (state, action) => {
+                state.deleteOneImage.isLoading = false;
+                state.deleteOneImage.status = 'rejected';
+                state.deleteOneImage.error = action.payload;
             })
     },
 });

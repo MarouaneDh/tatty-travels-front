@@ -44,3 +44,16 @@ export const uploadImage = createAsyncThunk(
     }
 );
 
+export const deleteOneImage = createAsyncThunk(
+    'images/deleteOneImage',
+    async (id, { fulfillWithValue, rejectWithValue }) => {
+        try {
+            const URL = API_HOST + API.images.upload + id;
+            const response = await axiosService.delete(URL);
+            return fulfillWithValue(response.data);
+        } catch (err) {
+            console.error(err);
+            return rejectWithValue(err.response?.data || err.message);
+        }
+    }
+);

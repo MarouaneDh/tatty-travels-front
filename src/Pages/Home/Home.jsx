@@ -26,6 +26,7 @@ const App = () => {
             const formData = new FormData();
             formData.append('file', e.target.files[0])
             formData.append('imageType', "hero")
+            formData.append('assiciatedTo', "")
             dispatch(uploadImage(formData))
         }
     }
