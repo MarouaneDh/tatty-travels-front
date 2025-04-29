@@ -1,4 +1,4 @@
-export const API_HOST = "http://localhost:3000/api/";
+export const API_HOST = "https://tatty-travels.onrender.com/api/";
 
 export const API = {
     auth: {
