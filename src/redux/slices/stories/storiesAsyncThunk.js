@@ -4,10 +4,10 @@ import axiosService from '../../../Services/axiosService';
 
 export const getAllStories = createAsyncThunk(
     'stories/getAllStories',
-    async (_, { fulfillWithValue, rejectWithValue }) => {
+    async (token, { fulfillWithValue, rejectWithValue }) => {
         try {
-            const URL = API_HOST + API.stories.story;
-            const response = await axiosService.get(URL);
+            const URL = API_HOST + API.stories.allStory;
+            const response = await axiosService.post(URL, { token: token });
             return fulfillWithValue(response.data);
         } catch (err) {
             console.error(err);

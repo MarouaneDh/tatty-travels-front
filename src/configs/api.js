@@ -1,4 +1,4 @@
-export const API_HOST = "https://tatty-travels.onrender.com/api/";
+export const API_HOST = "http://localhost:3000/api/";
 
 export const API = {
     auth: {
@@ -7,10 +7,12 @@ export const API = {
     },
     destination: {
         destination: 'destination/',
+        allDestination: 'destination/all',
         featured: 'destination/featured',
     },
     stories: {
         story: 'story/',
+        allStory: 'story/all',
     },
     images: {
         upload: 'upload/'

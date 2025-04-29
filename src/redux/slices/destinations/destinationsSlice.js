@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllDestinations, getOneDestination, getFeaturedDestinations } from './destinationsAsyncThunk';
+import { getAllDestinations, getOneDestination, getFeaturedDestinations, addDestination } from './destinationsAsyncThunk';
 
 const initialState = {
     AllDestinations: {
@@ -19,6 +19,12 @@ const initialState = {
         status: null,
         error: null,
         OneDestination: null,
+    },
+    AddDestination: {
+        isLoading: false,
+        status: null,
+        error: null,
+        AddDestination: null,
     }
 };
 
@@ -77,6 +83,23 @@ export const destinationsSlice = createSlice({
                 state.FeaturedDestinations.isLoading = false;
                 state.FeaturedDestinations.status = 'rejected';
                 state.FeaturedDestinations.error = action.payload;
+            })
+
+            //add destination
+            .addCase(addDestination.pending, (state) => {
+                state.AddDestination.isLoading = true;
+                state.AddDestination.status = 'pending'
+                state.AddDestination.error = null
+            })
+            .addCase(addDestination.fulfilled, (state, action) => {
+                state.AddDestination.isLoading = false;
+                state.AddDestination.status = 'fulfilled'
+                state.AddDestination.AddDestination = action.payload.response
+            })
+            .addCase(addDestination.rejected, (state, action) => {
+                state.AddDestination.isLoading = false;
+                state.AddDestination.status = 'rejected';
+                state.AddDestination.error = action.payload;
             })
     },
 });

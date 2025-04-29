@@ -14,8 +14,10 @@ const TravelStoriesSection = () => {
     const dispatch = useDispatch()
     const { AllStories, error, isLoading, status } = useSelector((state) => state.stories.AllStories);
 
+    const token = localStorage.getItem('token');
+
     useEffect(() => {
-        dispatch(getAllStories());
+        dispatch(getAllStories(token));
     }, [])
 
     return (

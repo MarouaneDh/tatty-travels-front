@@ -4,10 +4,10 @@ import axiosService from '../../../Services/axiosService';
 
 export const getAllDestinations = createAsyncThunk(
     'destinations/getAllDestinations',
-    async (_, { fulfillWithValue, rejectWithValue }) => {
+    async (token, { fulfillWithValue, rejectWithValue }) => {
         try {
-            const URL = API_HOST + API.destination.destination;
-            const response = await axiosService.get(URL);
+            const URL = API_HOST + API.destination.allDestination;
+            const response = await axiosService.post(URL, { token: token });
             return fulfillWithValue(response.data);
         } catch (err) {
             console.error(err);
@@ -36,6 +36,20 @@ export const getFeaturedDestinations = createAsyncThunk(
         try {
             const URL = API_HOST + API.destination.featured;
             const response = await axiosService.get(URL);
+            return fulfillWithValue(response.data);
+        } catch (err) {
+            console.error(err);
+            return rejectWithValue(err.response?.data || err.message);
+        }
+    }
+);
+
+export const addDestination = createAsyncThunk(
+    'destinations/addDestination',
+    async (data, { fulfillWithValue, rejectWithValue }) => {
+        try {
+            const URL = API_HOST + API.destination.destination;
+            const response = await axiosService.post(URL, data);
             return fulfillWithValue(response.data);
         } catch (err) {
             console.error(err);
