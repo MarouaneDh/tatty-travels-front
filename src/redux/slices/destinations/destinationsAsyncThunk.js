@@ -57,3 +57,17 @@ export const addDestination = createAsyncThunk(
         }
     }
 );
+
+export const editDestination = createAsyncThunk(
+    'destinations/editDestination',
+    async (data, { fulfillWithValue, rejectWithValue }) => {
+        try {
+            const URL = API_HOST + API.destination.destination;
+            const response = await axiosService.patch(URL, data);
+            return fulfillWithValue(response.data);
+        } catch (err) {
+            console.error(err);
+            return rejectWithValue(err.response?.data || err.message);
+        }
+    }
+);

@@ -2,6 +2,7 @@
 
 .destination-details {
     margin-bottom: 50px;
+    position: relative;
 }
 
 .destination-hero {
@@ -102,4 +103,28 @@
     .destination-hero h2 {
         font-size: 2em;
     }
+}
+
+.gallery-item {
+    position: relative;
+}
+
+.delete_icon {
+    color: white;
+    background-color: red;
+    padding: 5px 7px;
+    border-radius: 50px;
+    position: absolute;
+    top: -12px;
+    left: -12px;
+}
+
+.loading_delete_icon {
+    color: #000;
+    background-color: rgb(211, 211, 211);
+    padding: 5px 7px;
+    border-radius: 50px;
+    position: absolute;
+    top: -12px;
+    left: -12px;
 }
