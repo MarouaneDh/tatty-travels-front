@@ -1,0 +1,14 @@
+.modal_body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    border-radius: 6px;
+    border: 2px #999 solid
+}
+
+.text_error {
+    color: red;
+}

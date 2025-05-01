@@ -58,7 +58,7 @@ const App = () => {
                 >
                     <div className="hero-content">
                         {
-                            token && <label for="file-upload" class="custom-file-upload">
+                            token && <label htmlFor="file-upload" className="custom-file-upload">
                                 {
                                     isLoading ?
                                         <FontAwesomeIcon icon={faSpinner} spin />
