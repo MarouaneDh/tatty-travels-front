@@ -6,7 +6,7 @@
 }
 
 .destination-hero {
-    height: 500px;
+    height: 350px;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -116,7 +116,8 @@
     border-radius: 50px;
     position: absolute;
     top: -12px;
-    left: -12px;
+    left: -8px;
+    cursor: pointer;
 }
 
 .loading_delete_icon {
@@ -127,4 +128,27 @@
     position: absolute;
     top: -12px;
     left: -12px;
+}
+
+.edit-button {
+    background-color: #C7D9DD;
+    color: #000;
+    padding: 8px 8px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+input,
+textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
 }

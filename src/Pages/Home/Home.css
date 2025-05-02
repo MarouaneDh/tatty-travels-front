@@ -97,7 +97,7 @@ input[type="file"] {
 }
 
 .custom-file-upload {
-    background-color: #ADB2D4;
+    background-color: #C7D9DD;
     color: #000;
     padding: 4px 8px;
     text-decoration: none;
@@ -107,6 +107,7 @@ input[type="file"] {
     position: absolute;
     left: 10px;
     top: 10px;
+    cursor: pointer;
 }
 
 /* Responsive styles for Home component */

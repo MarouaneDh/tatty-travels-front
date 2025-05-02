@@ -5,8 +5,10 @@
 }
 
 input {
-    border-radius: 6px;
-    border: 2px #999 solid
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .text_error {
