@@ -31,12 +31,14 @@ const Header = () => {
     return (
         <header className="sticky-header">
             <div className="container nav-container">
-                <h1 className="logo">Tatty travels</h1>
+                <Link to="/" className="logo-link" onClick={handleNavLinkClick}>
+                    <h1 className="logo">Tatty travels</h1>
+                </Link>
                 <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
                     <ul className="nav-list">
                         <li><Link to="/" className="nav-link" onClick={handleNavLinkClick}>Home</Link></li>
                         <li><Link to="/explore" className="nav-link" onClick={handleNavLinkClick}>Explore</Link></li>
-                        <li><Link to="/stories" className="nav-link" onClick={handleNavLinkClick}>Stories</Link></li>
+                        {/* <li><Link to="/stories" className="nav-link" onClick={handleNavLinkClick}>Stories</Link></li> */}
                         <li><Link to="/gallery" className="nav-link" onClick={handleNavLinkClick}>Gallery</Link></li>
                         {
                             token ? <li onClick={handleLogout}><Link className="nav-link" >Logout</Link></li> :

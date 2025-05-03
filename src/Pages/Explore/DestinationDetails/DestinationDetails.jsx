@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faUpload, faSpinner, faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
 
-import { getOneDestination } from '../../../redux/slices/destinations/destinationsAsyncThunk';
+import { editDestination, getOneDestination } from '../../../redux/slices/destinations/destinationsAsyncThunk';
 import { deleteOneImage, uploadImage } from '../../../redux/slices/images/imagesAsyncThunk';
 
 import './DestinationDetails.css';
@@ -20,6 +20,7 @@ const DestinationDetails = () => {
     const images = useSelector((state) => state.images.deleteOneImage)
     const OneImageUpload = useSelector((state) => state.images.OneImageUpload)
     const OneDestination = useSelector((state) => state.destinations.OneDestination.OneDestination)
+    const EditDestination = useSelector((state) => state.destinations.EditDestination)
 
     const [isEdit, setIsEdit] = useState(false)
 
@@ -75,6 +76,20 @@ const DestinationDetails = () => {
         setTodo(newTodo)
     }
 
+    const handleEditDestination = () => {
+        dispatch(editDestination({
+            data: {
+                title,
+                description,
+                toDo: todo,
+                bestTime,
+                featured,
+                isLive
+            },
+            id: destinationId
+        }))
+    }
+
     useEffect(() => {
         if (destinationId) {
             dispatch(getOneDestination(destinationId))
@@ -91,6 +106,13 @@ const DestinationDetails = () => {
             setIsLive(OneDestination.isLive)
         }
     }, [OneDestination])
+
+    useEffect(() => {
+        if (EditDestination.status === 'fulfilled') {
+            setIsEdit(false)
+            dispatch(getOneDestination(destinationId))
+        }
+    }, [EditDestination.status])
 
     return (
         <motion.div
@@ -134,11 +156,11 @@ const DestinationDetails = () => {
                     {
                         isEdit && <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <div onChange={(e) => setFeatured(e.target.checked)} className="form-check form-switch">
-                                <input className="form-check-input" checked={featured} type="checkbox" role="switch" id="featured" />
+                                <input className="form-check-input" defaultChecked={featured} type="checkbox" role="switch" id="featured" />
                                 <label className="form-check-label" htmlFor="featured">Featured</label>
                             </div>
                             <div onChange={(e) => setIsLive(e.target.checked)} className="form-check form-switch">
-                                <input className="form-check-input" checked={isLive} type="checkbox" role="switch" id="isLive" />
+                                <input className="form-check-input" defaultChecked={isLive} type="checkbox" role="switch" id="isLive" />
                                 <label className="form-check-label" htmlFor="isLive">Live</label>
                             </div>
                         </div>
@@ -193,8 +215,12 @@ const DestinationDetails = () => {
                     <hr />
                     {
                         isEdit && <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <Button style={{ color: 'black', backgroundColor: '#C7D9DD', border: 'none', height: 48 }} onClick={toggleEdit}>
-                                Save changes
+                            <Button style={{ color: 'black', backgroundColor: '#C7D9DD', border: 'none', height: 48 }} onClick={handleEditDestination}>
+                                {
+                                    EditDestination.isLoading ?
+                                        <FontAwesomeIcon icon={faSpinner} spin />
+                                        : <span>Save changes</span>
+                                }
                             </Button>
                             <Button style={{ height: 48 }} variant="secondary" onClick={toggleEdit}>
                                 Close

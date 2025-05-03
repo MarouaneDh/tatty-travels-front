@@ -62,8 +62,8 @@ export const editDestination = createAsyncThunk(
     'destinations/editDestination',
     async (data, { fulfillWithValue, rejectWithValue }) => {
         try {
-            const URL = API_HOST + API.destination.destination;
-            const response = await axiosService.patch(URL, data);
+            const URL = API_HOST + API.destination.destination + data.id;
+            const response = await axiosService.patch(URL, data.data);
             return fulfillWithValue(response.data);
         } catch (err) {
             console.error(err);
