@@ -29,6 +29,7 @@
     color: white;
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
 }
 
 .destination h3 {
@@ -84,4 +85,22 @@
 .icons {
     width: 40px;
     height: 40px
+}
+
+.delete-destination {
+    background-color: #FF4D4D;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.delete-destination:hover {
+    background-color: #FF1A1A;
 }

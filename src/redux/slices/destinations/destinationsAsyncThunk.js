@@ -71,3 +71,17 @@ export const editDestination = createAsyncThunk(
         }
     }
 );
+
+export const deleteDestination = createAsyncThunk(
+    'destinations/deleteDestination',
+    async (id, { fulfillWithValue, rejectWithValue }) => {
+        try {
+            const URL = API_HOST + API.destination.destination + id;
+            const response = await axiosService.delete(URL);
+            return fulfillWithValue(response.data);
+        } catch (err) {
+            console.error(err);
+            return rejectWithValue(err.response?.data || err.message);
+        }
+    }
+);

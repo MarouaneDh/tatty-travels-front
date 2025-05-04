@@ -6,13 +6,14 @@ import { motion } from 'framer-motion';
 import { API, API_HOST } from '../../../configs/api';
 import { hideFullscreen, showFullscreen, variants } from '../../../configs/helper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose, faUpload, faSpinner, faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faClose, faUpload, faSpinner, faEdit, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
 
 import { editDestination, getOneDestination } from '../../../redux/slices/destinations/destinationsAsyncThunk';
 import { deleteOneImage, uploadImage } from '../../../redux/slices/images/imagesAsyncThunk';
 
 import './DestinationDetails.css';
+import DeleteDestinationModal from '../DeleteDestinationModal/DeleteDestinationModal';
 
 const DestinationDetails = () => {
     const dispatch = useDispatch()
@@ -21,6 +22,7 @@ const DestinationDetails = () => {
     const OneImageUpload = useSelector((state) => state.images.OneImageUpload)
     const OneDestination = useSelector((state) => state.destinations.OneDestination.OneDestination)
     const EditDestination = useSelector((state) => state.destinations.EditDestination)
+    const DeleteDestination = useSelector((state) => state.destinations.DeleteDestination);
 
     const [isEdit, setIsEdit] = useState(false)
 
@@ -30,6 +32,8 @@ const DestinationDetails = () => {
     const [bestTime, setBestTime] = useState('')
     const [featured, setFeatured] = useState(false)
     const [isLive, setIsLive] = useState(false)
+    const [showDelete, setShowDelete] = useState(false);
+    const [destinationToDelete, setDestinationToDelete] = useState("");
 
     const destinationId = params.id
     const token = localStorage.getItem('token')
@@ -90,6 +94,11 @@ const DestinationDetails = () => {
         }))
     }
 
+    const handleDeleteClick = (id) => {
+        setShowDelete(true);
+        setDestinationToDelete(id);
+    }
+
     useEffect(() => {
         if (destinationId) {
             dispatch(getOneDestination(destinationId))
@@ -122,6 +131,7 @@ const DestinationDetails = () => {
             exit="exit"
             className="container"
         >
+            <DeleteDestinationModal navigate={true} showDelete={showDelete} setShowDelete={setShowDelete} destinationToDelete={destinationToDelete} setDestinationToDelete={setDestinationToDelete} />
             <section className="destination-details">
                 <div
                     className="destination-hero"
@@ -151,6 +161,10 @@ const DestinationDetails = () => {
                     }
                     {
                         !isEdit && token && <FontAwesomeIcon onClick={toggleEdit} className="edit-button" icon={faEdit} />
+                    }
+                    {
+                        token && (DeleteDestination.isLoading ? <div className='delete-destination-details'><FontAwesomeIcon icon={faSpinner} spin /></div> :
+                            <FontAwesomeIcon onClick={() => handleDeleteClick(destinationId)} className='delete-destination-details' icon={faTrashCan} />)
                     }
                     <input id="main-file-upload" type="file" value="" onChange={handleMainImageUpload} />
                     {

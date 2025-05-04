@@ -9,33 +9,41 @@ import { variants } from '../../configs/helper';
 import AddEditDestination from './AddEditDestination/AddDestination';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare, faSpinner, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 import { getAllDestinations } from '../../redux/slices/destinations/destinationsAsyncThunk';
 
 import 'react-loading-skeleton/dist/skeleton.css'
 import './Explore.css';
+import DeleteDestinationModal from './DeleteDestinationModal/DeleteDestinationModal';
 
 
 const ExploreSection = () => {
     const dispatch = useDispatch();
     const { AllDestinations } = useSelector((state) => state.destinations.AllDestinations);
-    const { AddDestination, error, isLoading, status } = useSelector((state) => state.destinations.AddDestination);
+    const { isLoading, status } = useSelector((state) => state.destinations.AddDestination);
+    const DeleteDestination = useSelector((state) => state.destinations.DeleteDestination);
 
     const [show, setShow] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
+    const [destinationToDelete, setDestinationToDelete] = useState("");
 
     const token = localStorage.getItem('token');
+
+    const handleDeleteClick = (id) => {
+        setShowDelete(true);
+        setDestinationToDelete(id);
+    }
 
     useEffect(() => {
         dispatch(getAllDestinations(token));
     }, [])
 
     useEffect(() => {
-        if (status === 'fulfilled') {
+        if (status === 'fulfilled' || DeleteDestination.status === 'fulfilled') {
             dispatch(getAllDestinations(token));
         }
-    }, [status])
+    }, [status, DeleteDestination.status])
 
     return (
         <motion.div
@@ -47,6 +55,7 @@ const ExploreSection = () => {
         >
             <section className="explore-destinations">
                 <AddEditDestination show={show} setShow={setShow} />
+                <DeleteDestinationModal navigate={false} showDelete={showDelete} setShowDelete={setShowDelete} destinationToDelete={destinationToDelete} setDestinationToDelete={setDestinationToDelete} />
                 <h2>Explore Destinations</h2>
                 <div className="destination-grid">
                     {
@@ -75,6 +84,10 @@ const ExploreSection = () => {
                                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${API_HOST + API.images.upload + destination.mainPicture})`,
                                     }}
                                 >
+                                    {
+                                        token && (DeleteDestination.isLoading ? <div className='delete-destination'><FontAwesomeIcon icon={faSpinner} spin /></div> :
+                                            <FontAwesomeIcon onClick={() => handleDeleteClick(destination._id)} className='delete-destination' icon={faTrashCan} />)
+                                    }
                                     <h3>{destination.title}</h3>
                                     <p>{destination.description}</p>
                                     <Link
@@ -88,15 +101,6 @@ const ExploreSection = () => {
                         })
                     }
                 </div>
-                {/* {
-                    isLoading && <div className="destination-grid">
-                        <SkeletonTheme baseColor="#ffffff" highlightColor="rgba(0, 0, 0, 0.4)">
-                            <Skeleton className="destination" />
-                            <Skeleton className="destination" />
-                            <Skeleton className="destination" />
-                        </SkeletonTheme>
-                    </div>
-                } */}
             </section>
         </motion.div>
     )

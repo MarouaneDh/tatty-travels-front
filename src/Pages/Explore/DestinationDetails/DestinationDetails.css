@@ -139,7 +139,7 @@
     font-weight: bold;
     transition: background-color 0.3s ease;
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 10px;
     cursor: pointer;
 }
@@ -151,4 +151,22 @@ textarea {
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 100%;
+}
+
+.delete-destination-details {
+    background-color: #FF4D4D;
+    color: white;
+    padding: 8px 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    cursor: pointer;
+}
+
+.delete-destination-details:hover {
+    background-color: #FF1A1A;
 }
