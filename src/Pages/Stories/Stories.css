@@ -21,6 +21,7 @@
     border: 1px solid #b6b6b6;
     border-radius: 8px;
     overflow: hidden;
+    position: relative;
 }
 
 .story img {
@@ -76,4 +77,22 @@
     .travel-stories h2 {
         font-size: 2.5em;
     }
+}
+
+.delete-story {
+    background-color: #FF4D4D;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.delete-story:hover {
+    background-color: #FF1A1A;
 }

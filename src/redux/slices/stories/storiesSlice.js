@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllStories, getOneStory } from './storiesAsyncThunk';
+import { deleteOneStory, getAllStories, getOneStory } from './storiesAsyncThunk';
 
 const initialState = {
     AllStories: {
@@ -13,7 +13,13 @@ const initialState = {
         status: null,
         error: null,
         OneStory: null,
-    }
+    },
+    DeleteOneStory: {
+        isLoading: false,
+        status: null,
+        error: null,
+        DeleteOneStory: null,
+    },
 };
 
 export const storiesSlice = createSlice({
@@ -54,6 +60,23 @@ export const storiesSlice = createSlice({
                 state.OneStory.isLoading = false;
                 state.OneStory.status = 'rejected';
                 state.OneStory.error = action.payload;
+            })
+
+            //delete one story
+            .addCase(deleteOneStory.pending, (state) => {
+                state.DeleteOneStory.isLoading = true;
+                state.DeleteOneStory.status = 'pending'
+                state.DeleteOneStory.error = null
+            })
+            .addCase(deleteOneStory.fulfilled, (state, action) => {
+                state.DeleteOneStory.isLoading = false;
+                state.DeleteOneStory.status = 'fulfilled'
+                state.DeleteOneStory.DeleteOneStory = action.payload.response
+            })
+            .addCase(deleteOneStory.rejected, (state, action) => {
+                state.DeleteOneStory.isLoading = false;
+                state.DeleteOneStory.status = 'rejected';
+                state.DeleteOneStory.error = action.payload;
             })
     },
 });
