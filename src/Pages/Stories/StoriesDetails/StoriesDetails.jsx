@@ -1,21 +1,34 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
 import { motion } from 'framer-motion';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getOneStory } from '../../../redux/slices/stories/storiesAsyncThunk';
 import { API, API_HOST } from '../../../configs/api';
 import { hideFullscreen, showFullscreen, variants } from '../../../configs/helper';
+import DeleteStoryModal from '../DeleteStoryModal/DeleteStoryModal';
 
 import './StoriesDetails.css';
 
 const StoryDetails = () => {
     const params = useParams()
     const dispatch = useDispatch();
-    const { OneStory, error, isLoading, status } = useSelector((state) => state.stories.OneStory);
+    const OneStory = useSelector((state) => state.stories.OneStory.OneStory);
 
     const storyId = params.id;
+
+    const [showDelete, setShowDelete] = useState(false);
+    const [storyToDelete, setStoryToDelete] = useState("");
+
+    const token = localStorage.getItem('token');
+
+    const handleDeleteClick = (id) => {
+        setShowDelete(true);
+        setStoryToDelete(id);
+    }
 
     useEffect(() => {
         if (storyId) {
@@ -32,8 +45,10 @@ const StoryDetails = () => {
             className="container"
         >
             <section className="story-details">
+                <DeleteStoryModal navigate={true} showDelete={showDelete} setShowDelete={setShowDelete} storyToDelete={storyToDelete} setStoryToDelete={setStoryToDelete} />
                 <div className="story-hero">
-                    <img src={API_HOST + API.images.upload + OneStory?.mainPicture} alt={OneStory?.title} />
+                    {token && <FontAwesomeIcon onClick={() => handleDeleteClick(storyId)} className='delete-story' icon={faTrashCan} />}
+                    {OneStory?.mainPicture && <img src={API_HOST + API.images.upload + OneStory?.mainPicture} alt={OneStory?.title} />}
                     <h2>{OneStory?.title}</h2>
                 </div>
                 <div className="story-content">
@@ -42,7 +57,7 @@ const StoryDetails = () => {
                         {
                             OneStory?.images && OneStory.images.map((image, index) => (
                                 <img
-                                    key={image}
+                                    key={index}
                                     src={API_HOST + API.images.upload + image}
                                     alt="Italy 1"
                                     className="gallery-image"

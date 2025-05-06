@@ -20,7 +20,7 @@ const DeleteStoryModal = ({ navigate, showDelete, setShowDelete, storyToDelete, 
         setShowDelete(false);
         setStoryToDelete("");
         if (navigate) {
-            navigation("/explore");
+            navigation("/stories");
         }
     }
 

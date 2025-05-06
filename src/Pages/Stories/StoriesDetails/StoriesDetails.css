@@ -7,11 +7,12 @@
 .story-hero {
     text-align: center;
     margin-bottom: 30px;
+    position: relative;
 }
 
 .story-hero img {
     width: 100%;
-    max-height: 500px;
+    max-height: 350px;
     object-fit: cover;
     border-radius: 8px;
 }
